@@ -18,8 +18,8 @@ class CategoryController extends Controller
     public function index()
     {   
         
-            $data=Car::all();
-            return view('admin.category', compact('data'));
+            $categories = Category::all();
+            return view('admin.category', compact('categories'));
         }
     
         
@@ -79,6 +79,7 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $data = Car::find($id);
+        
         $data->id = $request->input('id');
         $data->Category= $request->input('category');
 

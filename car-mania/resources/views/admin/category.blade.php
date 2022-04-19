@@ -8,6 +8,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <title>Category</title>
 
     @include("admin.admincss")
@@ -34,21 +39,21 @@
             @php
             $i = 0;
             @endphp
-            @foreach ($car as $data)
+            @foreach ($categories as $category)
 
             <tbody>
               <tr>
                 <th scope="row"><td>{{ ++$i }}</td></th>
-                <td><td>{{ $data->category }}</td></td>
+                <td><td>{{ $categories->category }}</td></td>
                 <td>
 
                     @csrf
                     
-                    <form action="{{url('delete',$data->id) }}" method="post">
-                        <a href="{{ url('edit/'.$data->id) }}" type="submit" class="btn btn-primary" >Edit</a>    
+                    <form action="{{url('delete',$category->id) }}" method="post">
+                        <a href="{{ url('edit_category'.$category->id) }}" type="submit" class="btn btn-primary" >Edit</a>    
                         @csrf
                         @method('HEAD')
-                       <button class="btn btn-danger  delete-confirm" data-name="{{ $data->category }}" type="submit">Delete</button>
+                       <button class="btn btn-danger  delete-confirm" data-name="{{ $category->name }}" type="submit">Delete</button>
                       </form>
                   </td>
                 </tr>
