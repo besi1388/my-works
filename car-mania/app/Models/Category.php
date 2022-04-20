@@ -17,6 +17,6 @@ class Category extends Model
  
     public function cars()
     {
-        return $this->belongsToMany(Car::class, 'category_id');
+        return $this->belongsToMany(Car::class);
     }
 }

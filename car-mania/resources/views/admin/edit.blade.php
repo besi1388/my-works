@@ -1,17 +1,33 @@
-@extends('cars.layouts.app')
- 
-@section('content')
 
-    <div class="row">
-        <div class="col-lg-11"><br><br>
-            <h2>Update Cars</h2>
-        </div><br><br>
-        <div class="col-lg-1"><br><br>
-            <a class="btn btn-primary" href="{{ url('cars') }}"> Back</a>
-        </div>
-    </div><br><br>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit</title>
+    @include("admin.admincss")
+</head>
+<body>
+    
+
+
+
+
+
+<div class="container-scroller "> 
+
+    @include("admin.navbar")
  
-    @if ($errors->any())
+
+    <div class="container ">
+   
+        <br>
+ 
+        @if ($errors->any())
         <div class="alert alert-danger">
             <strong>Whoops!</strong> There were some problems with your input.<br><br>
             <ul>
@@ -56,4 +72,11 @@
         </div><br>
         <button type="submit" >Update</button>
     </form>
-@endsection
+    
+    </div>
+</div>
+
+@include("admin.adminscript")
+
+</body>
+</html>

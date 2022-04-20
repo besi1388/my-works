@@ -23,14 +23,14 @@
         </div>
     @endif
    
-    <form action="{{ url('update/'.$category->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ url('category_update/'.$category->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         @method('PUT')
      
         <div class="form-group">
             <label for="category">Category:</label>
-            <input type="text" class="form-control" id="category" placeholder="Enter category Name" name="category" value="{{ $category->}}">
+            <input type="text" class="form-control" id="category" placeholder="Enter category Name" name="category" value="{{ $category->category}}">
         </div><br>
        <br>
         <button type="submit" >Update</button>

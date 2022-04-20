@@ -19,7 +19,7 @@ class CategoryController extends Controller
     {   
         
             $categories = Category::all();
-            return view('admin.category', compact('categories'));
+            return view('admin.category.category', compact('categories'));
         }
     
         
@@ -54,7 +54,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+       
     }
 
     /**
@@ -65,8 +65,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $data= Car::find($id);
-        return view('admin.edit_category', ['cars'=>$data]);
+        $categories= Catgory::find($id);
+        dd('123');
+        return view('category/edit_category', ['category'=>$categories]);
     }
 
     /**
@@ -78,12 +79,12 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Car::find($id);
+        $categories = Category::find($id);
         
-        $data->id = $request->input('id');
-        $data->Category= $request->input('category');
+        $categories->id = $request->input('id');
+        $categories->Category= $request->input('category');
 
-        $data->update();
+        $categories->update();
         return redirect('category')->with('success', 'Category updated successfully');
          
     }
@@ -97,8 +98,8 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         
-            $data=Categories::find($id);
-            $data->delete();
+            $categories=Category::find($id);
+            $categories->delete();
             return redirect()->back();
         }
     

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Category;
 use App\Models\Car;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -10,17 +10,7 @@ use App\Models\User;
 
 class AdminController extends Controller
 {
-    public function user(){
-        $data=user::all();
-        return view('admin.users', compact('data'));
-    }
-
-    public function deleteuser($id){
-        $data=user::find($id);
-        $data->delete();
-        return redirect()->back();
-    }
-
+   
 
     public function cars(){
         $cars=Car::all();
@@ -81,7 +71,8 @@ class AdminController extends Controller
     public function create()
     {
     
-        return view('admin.create');
+        $categories = Category::all();
+        return view('admin.create', compact('categories'));
     }
 
     
@@ -106,8 +97,9 @@ class AdminController extends Controller
         
         $cars->Seats= $request->input('seats');
         $cars->Specs= $request->input('specs');
-        $cars->update(); 
-            
+       
+        $cars->update();
+           
           return redirect()->route('cars')
           ->with('success','Car has been created successfully.');
 
@@ -136,7 +128,8 @@ class AdminController extends Controller
         $car->Seats= $request->seats;
         $car->Specs= $request->specs;
         $car->save();
-
+        //dd($request->get('categories'));
+        $car->categories()->sync($request->get('categories')); 
         return redirect('/cars')->with('success','Car has been created successfully.');
     }
 

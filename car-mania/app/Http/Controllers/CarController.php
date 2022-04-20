@@ -7,7 +7,7 @@ use App\Models\User;
 use App\Models\Car;
 use Illuminate\Support\Facades\Auth;
 
-class ProjectController extends Controller
+class CarController extends Controller
 {
     //
 

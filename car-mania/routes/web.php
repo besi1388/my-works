@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProjectController; 
+
 use App\Http\Controllers\AdminController; 
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,13 +18,13 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
-Route::get('/redirect', [ProjectController::class, 'redirect']);
+Route::get('/redirect', [CarController::class, 'redirect']);
 
-Route::get('/users', [AdminController::class, 'user']);
+Route::get('/users', [UserController::class, 'user']);
 
-Route::get('/deleteuser/{id}', [AdminController::class, 'deleteuser']);
+Route::get('/deleteuser/{id}', [UserController::class, 'deleteuser']);
 
-Route::get('/', [ProjectController::class, 'getData'])->name('index');
+Route::get('/', [CarController::class, 'getData'])->name('index');
 //Route::get('/', [ProjectController::class, 'getCars'])->name('index2');
 
 

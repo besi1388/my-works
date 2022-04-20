@@ -43,8 +43,8 @@
 
             <tbody>
               <tr>
-                <th scope="row"><td>{{ ++$i }}</td></th>
-                <td><td>{{ $categories->category }}</td></td>
+                <td>{{ ++$i }}</td>
+                <td>{{ $category->category}}</td>
                 <td>
 
                     @csrf

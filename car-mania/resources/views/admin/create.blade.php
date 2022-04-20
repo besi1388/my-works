@@ -1,14 +1,19 @@
-@extends('cars.layouts.app')
+<x-app-layout>
 
-@section('content')
-    <div class="row">
-        <div class="col-lg-11">
-            <h2>Add New Car</h2>
-        </div>
-        <div class="col-lg-1">
-            <a class="btn btn-primary" href="{{ url('cars') }}"> Back</a>
-        </div>
-    </div>
+</x-app-layout>
+
+
+@include("admin.admincss")
+
+
+<div class="container-scroller "> 
+
+    @include("admin.navbar")
+
+
+    <div class="container  m-5">
+      
+        <br>  
  
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -36,15 +41,14 @@
             <input type="text" class="form-control" id="year" placeholder="Enter Year" name="year">
         </div>
 
-        <div class="form-group" for="Category">Category:
-            <label for="Category">Electric:</label>
-            <input  id="category" name="diesel" type="checkbox" value="" >
-            <label for="Category">Diesel:</label>
-            <input  id="category" name="category" type="checkbox" value="" >
-            <label for="Category">Hybrid:</label>
-            <input  id="category" name="category" type="checkbox" value="" >
-            
+        @foreach ($categories as $category)
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="categories[]"
+                   value="{{ $category->id }}">
+            <label class="form-check-label" for="inlineCheckbox1">
+                {{ $category->category}}</label>
         </div>
+    @endforeach
         
         <div class="form-group">
             <label for="Price">Price:</label>
@@ -65,4 +69,8 @@
         </div>
         <button type="submit" class="btn btn-success">Submit</button>
     </form>
-@endsection
+    </div>
+</div>
+
+@include("admin.adminscript")
+
